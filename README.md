@@ -1,61 +1,157 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Vraag de Imaam - Islamitische Vragen en Antwoorden
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Een mooie, moderne website waar moslims anoniem islamitische vragen kunnen stellen en betrouwbare antwoorden kunnen krijgen van deskundigen.
 
-## About Laravel
+## 🚀 Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Voor Gebruikers
+- **Anonieme Vragen Stellen** - Stel vragen zonder je identiteit prijs te geven
+- **Privacy Gegarandeerd** - Namen en e-mailadressen worden gehashed en zijn nooit zichtbaar
+- **Categorieën** - Vragen zijn georganiseerd in verschillende islamitische categorieën
+- **Tags** - Zoek en filter vragen op specifieke onderwerpen
+- **Zoekfunctionaliteit** - Vind antwoorden op je vragen door te zoeken
+- **Responsive Design** - Werkt perfect op alle apparaten
+- **Moderne UI** - Mooie, schone interface met Tailwind CSS
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Voor Administrators
+- **Filament Admin Panel** - Volledig beheer via een moderne admin interface
+- **Vraagbeheer** - Goedkeuren, beantwoorden en beheren van vragen
+- **Categoriebeheer** - Beheer categorieën met kleuren en beschrijvingen
+- **Tagbeheer** - Organiseer vragen met tags
+- **Privacy Focus** - Alleen vragen zijn zichtbaar, geen persoonlijke gegevens
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🛠️ Technische Details
 
-## Learning Laravel
+### Backend
+- **Laravel 12** - Moderne PHP framework
+- **Filament 4.0** - Admin panel
+- **MySQL** - Database
+- **Tailwind CSS 4.0** - Styling
+- **Vite** - Asset bundling
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Database Structuur
+- **Questions** - Vragen met gehashte persoonlijke gegevens
+- **Categories** - Categorieën met kleuren en beschrijvingen
+- **Tags** - Tags voor organisatie
+- **Question-Tag** - Many-to-many relatie
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Privacy Features
+- Namen en e-mailadressen worden gehashed met SHA-256
+- Alleen goedgekeurde vragen zijn zichtbaar
+- Geen persoonlijke gegevens in de frontend
+- Anonieme vraagstelling
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📁 Project Structuur
 
-## Laravel Sponsors
+```
+app/
+├── Http/Controllers/          # Controllers voor public pages
+├── Models/                    # Eloquent models
+└── Filament/Resources/        # Filament admin resources
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+resources/
+├── views/
+│   ├── layouts/              # Main layout
+│   ├── home.blade.php        # Homepage
+│   ├── contact.blade.php     # Contact page
+│   └── vragen/               # Questions pages
+├── css/app.css              # Custom styles
+└── js/app.js                # JavaScript functionality
 
-### Premium Partners
+database/
+├── migrations/              # Database migrations
+└── seeders/                # Sample data
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🎨 Design Features
 
-## Contributing
+- **Groen Kleurenschema** - Islamitische kleuren (groen, wit)
+- **Moderne Typografie** - Inter font voor leesbaarheid
+- **Responsive Grid** - Werkt op alle schermformaten
+- **Smooth Animations** - Subtiele hover effecten
+- **Accessibility** - Toegankelijk voor alle gebruikers
+- **Mobile-First** - Geoptimaliseerd voor mobiele apparaten
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🔧 Installatie
 
-## Code of Conduct
+1. **Dependencies installeren:**
+   ```bash
+   composer install
+   npm install
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2. **Environment configureren:**
+   ```bash
+   cp .env.example .env
+   # Pas database instellingen aan in .env
+   ```
 
-## Security Vulnerabilities
+3. **Database setup:**
+   ```bash
+   php artisan migrate
+   php artisan db:seed
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+4. **Assets builden:**
+   ```bash
+   npm run build
+   ```
 
-## License
+5. **Server starten:**
+   ```bash
+   php artisan serve
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📱 Pagina's
+
+### Homepage (`/`)
+- Hero sectie met call-to-action
+- Statistieken
+- Uitgelichte vragen
+- Categorieën overzicht
+- Recente vragen
+
+### Vragen (`/vragen`)
+- Overzicht van alle goedgekeurde vragen
+- Zoekfunctionaliteit
+- Filter op categorie en tags
+- Sorteer opties
+- Paginatie
+
+### Individuele Vraag (`/vragen/{id}`)
+- Volledige vraag en antwoord
+- Gerelateerde vragen
+- Categorie informatie
+- Deel functionaliteit
+- Vraag stellen modal
+
+### Contact (`/contact`)
+- Contact formulier
+- FAQ sectie
+- Informatie over de website
+
+## 🔐 Admin Panel
+
+Toegang via `/admin` (na Filament setup):
+
+- **Vragen beheren** - Goedkeuren, beantwoorden, uitlichten
+- **Categorieën** - Toevoegen, bewerken, kleuren instellen
+- **Tags** - Beheren van tags
+- **Privacy** - Geen toegang tot persoonlijke gegevens
+
+## 🌟 Highlights
+
+- **100% Anoniem** - Geen persoonlijke gegevens zichtbaar
+- **Modern Design** - Schone, professionele uitstraling
+- **Mobile Responsive** - Perfect op alle apparaten
+- **SEO Geoptimaliseerd** - Goede zoekmachine optimalisatie
+- **Snel en Veilig** - Geoptimaliseerd voor prestaties
+- **Nederlandse Interface** - Volledig in het Nederlands
+
+## 📞 Support
+
+Voor vragen over de website, gebruik het contact formulier op de website of neem contact op via de admin panel.
+
+---
+
+**Vraag de Imaam** - Een veilige plek voor moslims om te leren en te groeien. 🤲
