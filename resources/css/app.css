@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -6,11 +7,231 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Noto Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-serif: 'Amiri', Georgia, serif;
+
+    /* Ottoman-inspired color palette */
+    --color-ottoman-gold: #D4AF37;
+    --color-ottoman-deep-red: #8B1538;
+    --color-ottoman-burgundy: #722F37;
+    --color-ottoman-navy: #1B2951;
+    --color-ottoman-teal: #1B4B4C;
+    --color-ottoman-cream: #FDF7E7;
+    --color-ottoman-ivory: #F7F3E9;
+    --color-ottoman-sage: #9CAF88;
+    --color-ottoman-copper: #B87333;
+    --color-ottoman-midnight: #0F1419;
+
+    /* Modern interpretations */
+    --color-primary-50: #FDF7E7;
+    --color-primary-100: #F7E5A1;
+    --color-primary-200: #E8CE71;
+    --color-primary-300: #D4AF37;
+    --color-primary-400: #B8941E;
+    --color-primary-500: #9C7A0A;
+    --color-primary-600: #7A5F08;
+    --color-primary-700: #5A4706;
+    --color-primary-800: #3A2F04;
+    --color-primary-900: #1F1902;
+
+    --color-accent-50: #F5E8EA;
+    --color-accent-100: #E2B9C1;
+    --color-accent-200: #CF8A98;
+    --color-accent-300: #BC5B6F;
+    --color-accent-400: #A93C53;
+    --color-accent-500: #8B1538;
+    --color-accent-600: #6F1129;
+    --color-accent-700: #530D1A;
+    --color-accent-800: #37090B;
+    --color-accent-900: #1B0506;
 }
 
-/* Custom utilities */
+/* Ottoman Pattern Backgrounds */
+.ottoman-pattern {
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        linear-gradient(45deg, rgba(212, 175, 55, 0.05) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(212, 175, 55, 0.05) 25%, transparent 25%);
+    background-size: 60px 60px, 30px 30px, 30px 30px;
+    background-position: 0 0, 0 0, 15px 15px;
+}
+
+.ottoman-geometric {
+    background-image:
+        repeating-conic-gradient(
+            from 0deg at 50% 50%,
+            rgba(212, 175, 55, 0.1) 0deg 60deg,
+            transparent 60deg 120deg
+        );
+    background-size: 80px 80px;
+}
+
+.ottoman-border {
+    border-image: linear-gradient(90deg, var(--color-ottoman-gold), var(--color-ottoman-deep-red), var(--color-ottoman-gold)) 1;
+}
+
+/* Custom Typography */
+.font-arabic {
+    font-family: 'Amiri', serif;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+.text-ottoman-title {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.2;
+    background: linear-gradient(135deg, var(--color-ottoman-gold), var(--color-ottoman-deep-red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.text-ottoman-subtitle {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 500;
+    color: var(--color-ottoman-teal);
+}
+
+/* Decorative Elements */
+.islamic-star {
+    position: relative;
+}
+
+.islamic-star::before {
+    content: '✦';
+    color: var(--color-ottoman-gold);
+    font-size: 1.5em;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.7;
+}
+
+.crescent-divider {
+    position: relative;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.crescent-divider::before {
+    content: '☾';
+    font-size: 2rem;
+    color: var(--color-ottoman-gold);
+    background: white;
+    padding: 0 1rem;
+}
+
+.crescent-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-ottoman-gold), transparent);
+    z-index: -1;
+}
+
+/* Card Styles */
+.ottoman-card {
+    background: linear-gradient(135deg, var(--color-ottoman-cream) 0%, var(--color-ottoman-ivory) 100%);
+    border: 2px solid var(--color-ottoman-gold);
+    border-radius: 12px;
+    box-shadow:
+        0 4px 20px rgba(212, 175, 55, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.ottoman-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-ottoman-gold), var(--color-ottoman-deep-red), var(--color-ottoman-teal), var(--color-ottoman-gold));
+}
+
+.ottoman-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 8px 30px rgba(212, 175, 55, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+}
+
+/* Button Styles */
+.btn-ottoman {
+    background: linear-gradient(135deg, var(--color-ottoman-gold), var(--color-ottoman-copper));
+    color: white;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ottoman::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-ottoman:hover::before {
+    left: 100%;
+}
+
+.btn-ottoman:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.btn-ottoman-secondary {
+    background: linear-gradient(135deg, var(--color-ottoman-teal), var(--color-ottoman-navy));
+    color: white;
+    border: 2px solid var(--color-ottoman-gold);
+}
+
+/* Navigation Styles */
+.nav-ottoman {
+    background: linear-gradient(135deg, var(--color-ottoman-cream), white);
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid var(--color-ottoman-gold);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1);
+}
+
+/* Form Styles */
+.form-ottoman input,
+.form-ottoman textarea,
+.form-ottoman select {
+    border: 2px solid var(--color-ottoman-gold);
+    border-radius: 8px;
+    background: var(--color-ottoman-cream);
+    transition: all 0.3s ease;
+}
+
+.form-ottoman input:focus,
+.form-ottoman textarea:focus,
+.form-ottoman select:focus {
+    border-color: var(--color-ottoman-deep-red);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    background: white;
+}
+
+/* Utility Classes */
 .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -31,8 +252,8 @@ html {
 }
 
 /* Custom focus styles */
-.focus\:ring-green-500:focus {
-    --tw-ring-color: rgb(34 197 94 / 0.5);
+.focus\:ring-primary:focus {
+    --tw-ring-color: rgba(212, 175, 55, 0.5);
 }
 
 /* Mobile menu animation */
@@ -40,12 +261,33 @@ html {
     transition: all 0.3s ease-in-out;
 }
 
-/* Custom button hover effects */
-.btn-hover {
-    transition: all 0.2s ease-in-out;
+/* Animations */
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 
-.btn-hover:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+.shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+    animation: float 6s ease-in-out infinite;
 }
