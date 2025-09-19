@@ -16,13 +16,11 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'name' => 'nullable|string|max:255',
+            'email' => 'nullable|email|max:255',
             'subject' => 'required|string|max:255',
             'message' => 'required|string|max:2000',
         ], [
-            'name.required' => 'Naam is verplicht',
-            'email.required' => 'E-mailadres is verplicht',
             'email.email' => 'E-mailadres moet geldig zijn',
             'subject.required' => 'Onderwerp is verplicht',
             'message.required' => 'Bericht is verplicht',
@@ -37,8 +35,8 @@ class ContactController extends Controller
 
         // For now, just log the contact form (since mail is not configured)
         \Log::info('Contact form submission', [
-            'name' => $request->name,
-            'email' => $request->email,
+            'name' => $request->name ?: 'Anoniem',
+            'email' => $request->email ?: 'anonymous@example.com',
             'subject' => $request->subject,
             'message' => $request->message,
         ]);

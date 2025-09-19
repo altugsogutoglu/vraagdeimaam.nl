@@ -232,7 +232,7 @@
 </section>
 
 <!-- Question Modal -->
-<div id="questionModal" class="fixed inset-0 bg-black bg-opacity-60 hidden z-50 backdrop-blur-sm">
+<div id="questionModal" class="fixed inset-0 bg-gradient-to-br from-[#1B4B4C]/40 via-[#8B1538]/30 to-[#1B4B4C]/40 hidden z-50 backdrop-blur-sm">
     <div class="flex items-center justify-center min-h-screen p-4">
         <div class="relative bg-gradient-to-br from-[#FDF7E7] to-white border-2 border-[#D4AF37] rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <!-- Decorative header border -->

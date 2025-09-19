@@ -24,6 +24,20 @@ class Question extends Model
         'answered_at',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($question) {
+            if (empty($question->name_hash)) {
+                $question->name_hash = Hash::make('Anoniem');
+            }
+            if (empty($question->email_hash)) {
+                $question->email_hash = Hash::make('anonymous@example.com');
+            }
+        });
+    }
+
     protected $casts = [
         'is_approved' => 'boolean',
         'is_featured' => 'boolean',

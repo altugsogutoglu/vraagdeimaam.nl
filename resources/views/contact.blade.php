@@ -87,11 +87,11 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-[#0F1419] mb-3 font-arabic">
-                                    Naam *
+                                    Naam (optioneel)
                                 </label>
-                                <input type="text" id="name" name="name" value="{{ old('name') }}" required
+                                <input type="text" id="name" name="name" value="{{ old('name') }}"
                                     class="w-full px-4 py-3 border-2 border-[#D4AF37] rounded-xl focus:ring-3 focus:ring-[#D4AF37]/20 focus:border-[#8B1538] bg-[#FDF7E7] transition-all duration-300 @error('name') border-red-500 @enderror"
-                                    placeholder="Je volledige naam">
+                                    placeholder="Je volledige naam (optioneel)">
                                 @error('name')
                                 <p class="mt-2 text-sm text-red-600 flex items-center space-x-1">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -104,11 +104,11 @@
 
                             <div>
                                 <label for="email" class="block text-sm font-medium text-[#0F1419] mb-3 font-arabic">
-                                    E-mailadres *
+                                    E-mailadres (optioneel)
                                 </label>
-                                <input type="email" id="email" name="email" value="{{ old('email') }}" required
+                                <input type="email" id="email" name="email" value="{{ old('email') }}"
                                     class="w-full px-4 py-3 border-2 border-[#D4AF37] rounded-xl focus:ring-3 focus:ring-[#D4AF37]/20 focus:border-[#8B1538] bg-[#FDF7E7] transition-all duration-300 @error('email') border-red-500 @enderror"
-                                    placeholder="je@email.com">
+                                    placeholder="je@email.com (optioneel)">
                                 @error('email')
                                 <p class="mt-2 text-sm text-red-600 flex items-center space-x-1">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
