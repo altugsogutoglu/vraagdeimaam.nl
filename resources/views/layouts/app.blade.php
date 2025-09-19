@@ -14,7 +14,7 @@
     
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
+    @livewireStyles
     <!-- Additional Meta Tags -->
     <meta name="robots" content="index, follow">
     <meta name="author" content="Vraag de Imaam">
@@ -150,7 +150,7 @@
             }
         });
     </script>
-    
+    @livewireScripts
     @stack('scripts')
 </body>
 </html>

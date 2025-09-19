@@ -7,9 +7,7 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn as TableTextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\Action;
+use Filament\Actions\Action;
 use Filament\Tables\Table;
 
 class QuestionsTable
@@ -99,8 +97,6 @@ class QuestionsTable
                     ->action(fn ($record) => $record->update(['is_featured' => !$record->is_featured]))
                     ->visible(fn ($record) => $record->is_approved),
                 
-                EditAction::make(),
-                DeleteAction::make(),
             ])
             ->defaultSort('created_at', 'desc');
     }

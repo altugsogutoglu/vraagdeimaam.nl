@@ -7,8 +7,6 @@ use Filament\Tables\Columns\ColorColumn;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn as TableTextColumn;
 use Filament\Tables\Filters\SelectFilter;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Table;
 
 class CategoriesTable
@@ -65,10 +63,6 @@ class CategoriesTable
                         1 => 'Actief',
                         0 => 'Inactief',
                     ]),
-            ])
-            ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
             ])
             ->defaultSort('sort_order');
     }

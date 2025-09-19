@@ -15,8 +15,8 @@ class QuestionController extends Controller
         $validator = Validator::make($request->all(), [
             'question' => 'required|string|max:2000',
             'category_id' => 'required|exists:categories,id',
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'name' => 'nullable|string|max:255',
+            'email' => 'nullable|email|max:255',
             'tags' => 'nullable|array',
             'tags.*' => 'exists:tags,id',
         ], [
@@ -24,8 +24,6 @@ class QuestionController extends Controller
             'question.max' => 'Vraag mag maximaal 2000 tekens bevatten',
             'category_id.required' => 'Categorie is verplicht',
             'category_id.exists' => 'Geselecteerde categorie bestaat niet',
-            'name.required' => 'Naam is verplicht',
-            'email.required' => 'E-mailadres is verplicht',
             'email.email' => 'E-mailadres moet geldig zijn',
             'tags.array' => 'Tags moeten een lijst zijn',
             'tags.*.exists' => 'Een of meer geselecteerde tags bestaan niet',

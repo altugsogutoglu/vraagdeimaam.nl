@@ -6,8 +6,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ColorColumn;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Filters\SelectFilter;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Table;
 
 class TagsTable
@@ -49,10 +47,6 @@ class TagsTable
                         1 => 'Actief',
                         0 => 'Inactief',
                     ]),
-            ])
-            ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
             ])
             ->defaultSort('name');
     }
