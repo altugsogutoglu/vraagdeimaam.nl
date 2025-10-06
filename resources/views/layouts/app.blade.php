@@ -31,18 +31,17 @@
     @stack('head')
 
 
+    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VVECT8BFX2"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-VVECT8BFX2');
+    gtag('config', 'G-VVECT8BFX2');
     </script>
+
 
 </head>
 

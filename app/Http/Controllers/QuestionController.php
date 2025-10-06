@@ -2,87 +2,57 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Question;
-use App\Models\Category;
-use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class QuestionController extends Controller
 {
+    public function index()
+    {
+        return view('index');
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'question' => 'required|string|max:2000',
-            'category_id' => 'required|exists:categories,id',
+            'email' => 'required|email|max:255',
             'name' => 'nullable|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'tags' => 'nullable|array',
-            'tags.*' => 'exists:tags,id',
+            'question' => 'required|string|max:2000',
         ], [
+            'email.required' => 'E-mailadres is verplicht',
+            'email.email' => 'E-mailadres moet geldig zijn',
             'question.required' => 'Vraag is verplicht',
             'question.max' => 'Vraag mag maximaal 2000 tekens bevatten',
-            'category_id.required' => 'Categorie is verplicht',
-            'category_id.exists' => 'Geselecteerde categorie bestaat niet',
-            'email.email' => 'E-mailadres moet geldig zijn',
-            'tags.array' => 'Tags moeten een lijst zijn',
-            'tags.*.exists' => 'Een of meer geselecteerde tags bestaan niet',
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'errors' => $validator->errors()
-            ], 422);
+            return redirect()->route('home')->withErrors($validator)->withInput();
         }
 
         try {
-            // Create question with hashed personal data
-            $question = Question::createWithHashedData([
-                'question' => $request->question,
-                'category_id' => $request->category_id,
-                'name' => $request->name,
-                'email' => $request->email,
-            ]);
+            // Send email with question
+            Mail::raw(
+                "Nieuwe vraag ontvangen:\n\n" .
+                "Email: " . $request->email . "\n" .
+                "Naam: " . ($request->name ?? 'Niet opgegeven') . "\n\n" .
+                "Vraag: " . $request->question . "\n\n" .
+                "Verzonden op: " . now()->format('d-m-Y H:i:s'),
+                function ($message) {
+                    $message->to(config('mail.admin_email', 'admin@example.com'))
+                            ->subject('Nieuwe vraag - Vraag de Imaam');
+                }
+            );
 
-            // Attach tags if provided
-            if ($request->filled('tags')) {
-                $question->tags()->attach($request->tags);
-            }
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Uw vraag is succesvol ingediend en wacht op goedkeuring.'
-            ]);
+            return redirect()->route('home')->with('success', 'Uw vraag is succesvol verzonden.');
 
         } catch (\Exception $e) {
-            \Log::error('Error creating question', [
+            \Log::error('Error sending question email', [
                 'error' => $e->getMessage(),
                 'request' => $request->all()
             ]);
 
-            return response()->json([
-                'success' => false,
-                'message' => 'Er is een fout opgetreden. Probeer het later opnieuw.'
-            ], 500);
+            return redirect()->route('home')->withErrors(['error' => 'Er is een fout opgetreden. Probeer het later opnieuw.']);
         }
-    }
-
-    public function getCategories()
-    {
-        $categories = Category::active()
-            ->ordered()
-            ->get(['id', 'name', 'color']);
-
-        return response()->json($categories);
-    }
-
-    public function getTags()
-    {
-        $tags = Tag::active()
-            ->ordered()
-            ->get(['id', 'name', 'color']);
-
-        return response()->json($tags);
     }
 }

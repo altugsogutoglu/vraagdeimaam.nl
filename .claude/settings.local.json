@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(composer require:*)",
+      "Bash(php artisan vendor:publish:*)",
+      "Bash(php artisan:*)"
     ],
     "deny": [],
     "ask": []

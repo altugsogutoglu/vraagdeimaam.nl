@@ -1,24 +1,15 @@
 @import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import '../../vendor/livewire/flux/dist/flux.css';
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700&family=Noto+Sans:wght@0,400;0,600&display=swap');
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
     --font-sans: 'Noto Sans', ui-sans-serif, system-ui, sans-serif;
     --font-serif: 'Amiri', Georgia, serif;
-
-    /* Ottoman color palette */
-    --color-ottoman-gold: #D4AF37;
-    --color-ottoman-deep-red: #8B1538;
-    --color-ottoman-burgundy: #722F37;
-    --color-ottoman-navy: #1B2951;
-    --color-ottoman-teal: #1B4B4C;
-    --color-ottoman-cream: #FDF7E7;
-    --color-ottoman-ivory: #F7F3E9;
-    --color-ottoman-sage: #9CAF88;
-    --color-ottoman-copper: #B87333;
-    --color-ottoman-midnight: #0F1419;
 }
 
-/* Lightweight Ottoman styling */
+/* Basic styling */
 .font-arabic {
     font-family: 'Amiri', serif;
 }
@@ -27,111 +18,47 @@
     font-family: 'Amiri', serif;
     font-weight: 700;
     font-size: clamp(2rem, 5vw, 4rem);
-    background: linear-gradient(135deg, var(--color-ottoman-gold), var(--color-ottoman-deep-red));
+    background: linear-gradient(135deg, #D4AF37, #8B1538);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .text-ottoman-subtitle {
-    color: var(--color-ottoman-teal);
+    color: #1B4B4C;
 }
 
 .btn-ottoman {
-    background: linear-gradient(135deg, var(--color-ottoman-gold), var(--color-ottoman-copper));
+    background: linear-gradient(135deg, #D4AF37, #B87333);
     color: white;
     font-weight: 600;
     padding: 12px 24px;
     border-radius: 8px;
     border: none;
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-    will-change: transform;
-    backface-visibility: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-ottoman:hover {
-    transform: translate3d(0, -2px, 0);
+    transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
 
-.btn-ottoman-secondary {
-    background: linear-gradient(135deg, var(--color-ottoman-teal), var(--color-ottoman-navy));
-    color: white;
-    font-weight: 600;
-    padding: 12px 24px;
-    border-radius: 8px;
-    border: 2px solid var(--color-ottoman-gold);
-    box-shadow: 0 4px 15px rgba(27, 75, 76, 0.3);
-    will-change: transform;
-    backface-visibility: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn-ottoman-secondary:hover {
-    transform: translate3d(0, -2px, 0);
-    box-shadow: 0 6px 20px rgba(27, 75, 76, 0.4);
-}
-
 .ottoman-card {
-    background: linear-gradient(135deg, var(--color-ottoman-cream) 0%, var(--color-ottoman-ivory) 100%);
-    border: 2px solid var(--color-ottoman-gold);
+    background: linear-gradient(135deg, #FDF7E7 0%, #F7F3E9 100%);
+    border: 2px solid #D4AF37;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
-    will-change: transform;
-    backface-visibility: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.ottoman-card:hover {
-    transform: translate3d(0, -3px, 0);
-    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
+.ottoman-pattern {
+    opacity: 0.3;
 }
 
-.form-ottoman input,
-.form-ottoman textarea,
-.form-ottoman select {
-    border: 2px solid var(--color-ottoman-gold);
-    border-radius: 8px;
-    background: var(--color-ottoman-cream);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+.ottoman-geometric {
+    opacity: 0.1;
 }
 
-.form-ottoman input:focus,
-.form-ottoman textarea:focus,
-.form-ottoman select:focus {
-    border-color: var(--color-ottoman-deep-red);
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
-    background: white;
-    outline: none;
-}
-
-.crescent-divider {
-    position: relative;
-    text-align: center;
-    margin: 2rem 0;
-}
-
-.crescent-divider::before {
-    content: '☾';
-    font-size: 2rem;
-    color: var(--color-ottoman-gold);
-    background: white;
-    padding: 0 1rem;
-}
-
-.crescent-divider::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--color-ottoman-gold), transparent);
-    z-index: -1;
-}
-
-/* Smooth scrolling */
 html {
     scroll-behavior: smooth;
 }
